@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".dogsDisplay.DogFragment">
+
+    <data>
+        <variable
+            name="dog"
+            type="com.bitpunchlab.android.pawsgo.modelsRoom.DogRoom" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp"
+            android:background="@color/green_background"
+            >
+
+            <ImageView
+                android:id="@+id/image_dog"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{dog.dogImagesUri[0]}"
+                app:srcCompat="@drawable/placeholder"
+                tools:srcCompat="@drawable/placeholder" />
+
+            <TextView
+                android:id="@+id/dog_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{dog.dogName}"
+                android:textSize="@dimen/title_text_size"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                tools:text="Bobby"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_dog"/>
+
+            <TextView
+                android:id="@+id/pet_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{dog.animalType + `  -  ` + dog.dogBreed}"
+                android:textSize="@dimen/content_text_size"
+                android:textAlignment="center"
+                tools:text="Dog"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dog_name"/>
+
+            <TextView
+                android:id="@+id/pet_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{dog.dogGender != 0 ? (dog.dogGender == 1 ? `Gender:  Male` : `Gender:  Female`) : `Gender:  Unknown`}"
+                android:textSize="@dimen/content_text_size"
+                android:textAlignment="center"
+                tools:text="Male"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pet_type"/>
+
+            <TextView
+                android:id="@+id/pet_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{`Age:  ` + dog.dogAge}"
+                android:textSize="@dimen/content_text_size"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                tools:text="10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pet_gender"/>
+
+            <TextView
+                android:id="@+id/dog_owner_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{`Owner:   ` + dog.ownerName}"
+                android:textSize="@dimen/content_text_size"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                tools:text="Jessie"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pet_age"/>
+
+            <TextView
+                android:id="@+id/dog_owner_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{`Email:   ` + dog.ownerEmail}"
+                android:textSize="@dimen/content_text_size"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                tools:text="jess@abc.com"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dog_owner_name"/>
+
+
+            <TextView
+                android:id="@+id/dog_lost_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{`Lost Location:   ` + dog.placeLastSeen}"
+                android:textSize="@dimen/content_text_size"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:lineSpacingExtra="2dp"
+                tools:text="Markham, ON"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dog_owner_email"/>
+
+            <Button
+                android:id="@+id/button_show_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/button_left_right_margin"
+                android:layout_marginRight="@dimen/button_left_right_margin"
+                android:text="@string/location_in_map"
+                android:textSize="@dimen/button_text_size"
+                android:padding="@dimen/button_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dog_lost_location"
+                tools:ignore="SpUsage" />
+
+            <TextView
+                android:id="@+id/dog_lost_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="@{`Lost Date:   ` + dog.dateLastSeen}"
+                android:textSize="@dimen/content_text_size"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                tools:text="12.00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_show_map"/>
+
+            <TextView
+                android:id="@+id/dog_lost_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:text="@{`Lost Time:   ` + dog.hour + `:` + dog.minute}"
+                android:textSize="@dimen/content_text_size"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                tools:text="12.00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dog_lost_date"/>
+
+            <TextView
+                android:id="@+id/textview_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/content_left_right_margin"
+                android:layout_marginRight="@dimen/content_left_right_margin"
+                android:lineSpacingExtra="2dp"
+                android:text="@{dog.notes != null ? `Notes:   ` + dog.notes : `Notes:   Not Available` }"
+                android:textSize="@dimen/content_text_size"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                tools:text="Contact me via email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dog_lost_time"/>
+
+            <Button
+                android:id="@+id/button_send_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/button_left_right_margin"
+                android:layout_marginRight="@dimen/button_left_right_margin"
+                android:text="@string/send_message"
+                android:textSize="@dimen/button_text_size"
+                android:padding="@dimen/button_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_notes"
+                tools:ignore="SpUsage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

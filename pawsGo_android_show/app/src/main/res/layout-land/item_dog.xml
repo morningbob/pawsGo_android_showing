@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".dogsDisplay.DogListFragment"
+    >
+
+    <data>
+        <variable
+            name="dog"
+            type="com.bitpunchlab.android.pawsgo.modelsRoom.DogRoom" />
+        <variable
+            name="clickListener"
+            type="com.bitpunchlab.android.pawsgo.dogsDisplay.DogOnClickListener" />
+        <variable
+            name="messageClickListener"
+            type="com.bitpunchlab.android.pawsgo.dogsDisplay.MessageClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_background"
+        android:onClick="@{ () -> clickListener.onClick(dog) }"
+        >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/first_end_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/second_end_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.55"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/description_end_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="125dp"/>
+
+        <ImageView
+            android:id="@+id/thumbnail_dog"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerInside"
+            app:layout_constraintWidth_percent="0.3"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintDimensionRatio="1:1"
+            app:loadImage="@{dog.dogImagesUri[0]}"
+            app:srcCompat="@drawable/placeholder"
+            tools:srcCompat="@drawable/placeholder"
+            app:layout_constraintEnd_toEndOf="@id/first_end_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/description_end_line"
+            />
+
+        <LinearLayout
+            android:id="@+id/name_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@id/second_end_line"
+            app:layout_constraintStart_toStartOf="@id/first_end_line"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/description_end_line"
+            >
+
+            <TextView
+                android:id="@+id/textview_dog_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dog.dogName}"
+                tools:text="Danny"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textview_dog_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dog.dogGender != 0 ? (dog.dogGender == 1 ? `Male` : `Female`) : ``}"
+                tools:text="Male"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/address_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="5"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/second_end_line"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/description_end_line"
+            >
+
+            <TextView
+                android:id="@+id/textview_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dog.placeLastSeen}"
+                tools:text="Markham"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textview_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dog.dateLastSeen}"
+                tools:text="Oct 2, 2022"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/button_left_right_margin"
+            android:layout_marginRight="@dimen/button_left_right_margin"
+            android:text="@string/send_message"
+            android:textSize="@dimen/button_text_size"
+            android:layout_margin="5dp"
+            android:padding="@dimen/button_padding"
+            android:onClick="@{ () -> messageClickListener.onClick(dog) }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_end_line"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/green_background"
+        android:onClick="@{ () -> clickListener.onClick(dog) }"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="12"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/thumbnail_dog"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:layout_weight="3"
+                app:loadImage="@{dog.dogImagesUri[0]}"
+                app:srcCompat="@drawable/placeholder"
+                tools:srcCompat="@drawable/placeholder" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:orientation="vertical"
+                android:layout_weight="4"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textview_dog_name"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{dog.dogName}"
+                    tools:text="Danny"
+                    android:textSize="@dimen/content_text_size"/>
+
+                <TextView
+                    android:id="@+id/textview_dog_gender"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{dog.dogGender ? `Male` : `Female`}"
+                    tools:text="Male"
+                    android:textSize="@dimen/content_text_size"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="5"
+                android:layout_marginLeft="50dp">
+
+                <TextView
+                    android:id="@+id/textview_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{dog.placeLastSeen}"
+                    tools:text="Markham"
+                    android:textSize="@dimen/content_text_size"/>
+
+                <TextView
+                    android:id="@+id/textview_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{dog.dateLastSeen}"
+                    tools:text="Oct 2, 2022"
+                    android:textSize="@dimen/content_text_size"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/send_message"
+            android:layout_margin="10dp"
+            android:padding="@dimen/button_padding"
+            android:onClick="@{ () -> messageClickListener.onClick(dog) }" />
+
+    </LinearLayout>
+-->
+</layout>
+
+<!--
+    <TextView
+                android:id="@+id/textview_dog_id"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@{dog.dogID}"
+                tools:text="123"
+                android:textSize="@dimen/content_text_size"/>
+-->

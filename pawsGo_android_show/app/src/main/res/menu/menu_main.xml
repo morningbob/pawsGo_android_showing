@@ -1,0 +1,59 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bitpunchlab.android.pawsgo.MainActivity">
+
+    <item
+        android:id="@+id/appIntro"
+        android:orderInCategory="100"
+        android:title="@string/app_introduction"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/reportLostDog"
+        android:orderInCategory="100"
+        android:title="@string/i_lost_a_dog"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/reportFoundDog"
+        android:orderInCategory="100"
+        android:title="@string/i_found_a_dog"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/editReport"
+        android:orderInCategory="100"
+        android:title="@string/edit_report"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/listLostDogs"
+        android:orderInCategory="100"
+        android:title="@string/list_of_lost_dogs"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/listFoundDogs"
+        android:orderInCategory="100"
+        android:title="@string/list_of_found_dogs"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/readMessagesReceived"
+        android:orderInCategory="100"
+        android:title="@string/messages_received"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/readMessagesSent"
+        android:orderInCategory="100"
+        android:title="@string/messages_sent"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="100"
+        android:title="@string/logout"
+        app:showAsAction="never" />
+</menu>

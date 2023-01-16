@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.bitpunchlab.android.pawsgo.userAccount.LoginFragment"
+        android:label="@string/login_page"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_LoginFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.bitpunchlab.android.pawsgo.MainFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_MainFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/reportDogAction"
+            app:destination="@id/reportLostDogFragment" />
+        <action
+            android:id="@+id/viewDogsAction"
+            app:destination="@id/dogListFragment" />
+        <action
+            android:id="@+id/readMessagesAction"
+            app:destination="@id/readMessagesFragment" />
+        <action
+            android:id="@+id/changePasswordAction"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/chooseReportAction"
+            app:destination="@id/chooseReportFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.bitpunchlab.android.pawsgo.userAccount.CreateAccountFragment"
+        android:label="@string/create_account" >
+        <action
+            android:id="@+id/action_createAccountFragment_to_MainFragment"
+            app:destination="@id/MainFragment"
+            app:popUpTo="@id/createAccountFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/reportLostDogFragment"
+        android:name="com.bitpunchlab.android.pawsgo.reportLostDog.ReportLostDogFragment"
+        android:label="Report" >
+        <argument
+            android:name="lostOrFound"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/showMapAction"
+            app:destination="@id/chooseLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogListFragment"
+        android:name="com.bitpunchlab.android.pawsgo.dogsDisplay.DogListFragment"
+        android:label="Pets List"
+        tools:layout="@layout/fragment_dog_list" >
+        <argument
+            android:name="lostOrFound"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/SendAMessageAction"
+            app:destination="@id/sendMessageFragment" />
+        <action
+            android:id="@+id/showDogAction"
+            app:destination="@id/dogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendMessageFragment"
+        android:name="com.bitpunchlab.android.pawsgo.messages.SendMessageFragment"
+        android:label="@string/send_message"
+        tools:layout="@layout/fragment_send_message" >
+        <argument
+            android:name="dog"
+            app:argType="com.bitpunchlab.android.pawsgo.modelsRoom.DogRoom"
+            app:nullable="true" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLocationFragment"
+        android:name="com.bitpunchlab.android.pawsgo.location.ChooseLocationFragment"
+        android:label="Choose Location"
+        tools:layout="@layout/fragment_choose_location" >
+        <action
+            android:id="@+id/action_chooseLocationFragment_to_editReportFragment"
+            app:destination="@id/editReportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/readMessagesFragment"
+        android:name="com.bitpunchlab.android.pawsgo.messages.ReadMessagesFragment"
+        android:label="Messages"
+        tools:layout="@layout/fragment_read_messages" >
+        <argument
+            android:name="receivedOrSent"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_readMessagesFragment_to_sendMessageFragment"
+            app:destination="@id/sendMessageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogFragment"
+        android:name="com.bitpunchlab.android.pawsgo.dogsDisplay.DogFragment"
+        android:label="Pet"
+        tools:layout="@layout/fragment_dog" >
+        <argument
+            android:name="dog"
+            app:argType="com.bitpunchlab.android.pawsgo.modelsRoom.DogRoom" />
+        <action
+            android:id="@+id/sendMessageAction"
+            app:destination="@id/sendMessageFragment" />
+
+        <action
+            android:id="@+id/showLocationAction"
+            app:destination="@id/showLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showLocationFragment"
+        android:name="com.bitpunchlab.android.pawsgo.location.ShowLocationFragment"
+        android:label="@string/the_lost_location" >
+        <argument
+            android:name="dog"
+            app:argType="com.bitpunchlab.android.pawsgo.modelsRoom.DogRoom" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.bitpunchlab.android.pawsgo.userAccount.ChangePasswordFragment"
+        android:label="@string/change_password_title" />
+    <fragment
+        android:id="@+id/editReportFragment"
+        android:name="com.bitpunchlab.android.pawsgo.reportLostDog.EditReportFragment"
+        android:label="@string/edit_report"
+        tools:layout="@layout/fragment_edit_report" >
+        <argument
+            android:name="pet"
+            app:argType="com.bitpunchlab.android.pawsgo.modelsRoom.DogRoom" />
+        <action
+            android:id="@+id/chooseLocationAction"
+            app:destination="@id/chooseLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseReportFragment"
+        android:name="com.bitpunchlab.android.pawsgo.reportLostDog.ChooseReportFragment"
+        android:label="@string/choose_a_report"
+        tools:layout="@layout/fragment_choose_report" >
+        <action
+            android:id="@+id/editReportAction"
+            app:destination="@id/editReportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/petFormFragment"
+        android:name="com.bitpunchlab.android.pawsgo.reportLostDog.PetFormFragment"
+        android:label="fragment_pet_form"
+        tools:layout="@layout/fragment_pet_form" >
+        <argument
+            android:name="pet"
+            app:argType="com.bitpunchlab.android.pawsgo.modelsRoom.DogRoom"
+            app:nullable="true" />
+        <argument
+            android:name="lostOrFound"
+            app:argType="boolean" />
+    </fragment>
+</navigation>

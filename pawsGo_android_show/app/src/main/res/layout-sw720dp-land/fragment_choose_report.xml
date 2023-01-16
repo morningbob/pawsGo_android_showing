@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    tools:context=".reportLostDog.ChooseReportFragment"
+    android:background="@color/green_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/select_a_report"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="@dimen/title_text_size"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dogReportsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/content_left_right_margin"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="@dimen/content_left_right_margin"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+         />
+
+</LinearLayout>

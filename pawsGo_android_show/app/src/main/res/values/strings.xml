@@ -1,0 +1,129 @@
+<resources>
+    <string name="app_name">Paws Go</string>
+    <string name="login">Login</string>
+    <string name="name">Name:</string>
+    <string name="password">Password:</string>
+    <string name="send">Send</string>
+    <string name="email">Email:</string>
+    <string name="create_account">Create Account</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="logout">Logout</string>
+    <string name="authentication_service_alert">Authentication Service</string>
+    <string name="authentication_service_alert_desc">There is error in the authentication service.  Please try again later.</string>
+    <string name="ok">OK</string>
+    <string name="create_error_alert">Create User Account</string>
+    <string name="create_error_alert_desc">There is an error in the server.  The account was not created.  Please try again later.</string>
+    <string name="dog_name">Name:</string>
+    <string name="dog_breed">Breed:</string>
+    <string name="dog_gender">Gender:</string>
+    <string name="upload_picture">Upload Picture</string>
+    <string name="the_place_last_seen">The place last seen:</string>
+    <string name="choose_a_date">Choose a date</string>
+    <string name="location_permissions_alert">Location Permissions</string>
+    <string name="location_permissions_alert_desc">The location permissions are required to access the map functions of the app.  If you don\'t grant the permissions, you can\'t set the lost location in the map.</string>
+    <string name="allow">Allow</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_date">Select date</string>
+    <string name="select_time">Select Time</string>
+    <string name="dog_age">Age:</string>
+    <string name="missing_data_alert">Invalid Fields</string>
+    <string name="missing_data_alert_desc">Please make sure you entered pet\'s name, date of lost and place of lost</string>
+    <string name="report_lost_dog">Report Lost Pet</string>
+    <string name="home">Home</string>
+    <string name="login_page">Login Page</string>
+    <string name="lost_report_intro">Please fill in the form for your lost pet. We\'ll store the data in the database. If anyone found the pet, we\'ll send an email to you. If the other users want to search for lost pets, the pet\'s data will be listed to the users.</string>
+    <string name="select_a_time">Select a time</string>
+    <string name="select_a_date">Select a date</string>
+
+    <string-array name="gender_array">
+        <item>Choose</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="animalType_array">
+        <item>Choose</item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Bird</item>
+        <item>Other</item>
+    </string-array>
+    <string name="i_lost_a_dog">I lost a pet</string>
+    <string name="i_found_a_dog">I found a pet</string>
+    <string name="found_dog_intro">Please fill in the form. We\'ll match lost pet\' information with the data here. If we found a match, we\'ll email you and the owner.</string>
+    <string name="lost_dogs_list_intro">Below is a list of the lost pets reported. If you found the pet or have seen the dog, you can leave the owner a message here.</string>
+    <string name="found_dogs_list_intro">Below is a list of the pets found.  If you lost a pet, you can check out the list and click send message to contact the person.</string>
+    <string name="send_message">Send Message</string>
+    <string name="message_sent_alert">Message Sent</string>
+    <string name="message_sent_alert_desc">Your message has been sent to the pet owner.</string>
+    <string name="messages_received">Messages Received</string>
+    <string name="lost_dogs">Lost Pets</string>
+    <string name="list_of_lost_dogs">List of Lost Pets</string>
+    <string name="list_of_found_dogs">List of Found Pets</string>
+    <string name="reply">Reply</string>
+    <string name="messages_sent">Messages Sent</string>
+    <string name="enter_message_alert">Enter Message</string>
+    <string name="message_was_not_sent_alert">Message was not Sent</string>
+    <string name="message_not_sent_alert_desc">There is error in sending the message.  Please make sure you have wifi.  If the error persists, there is probably error in the server.</string>
+    <string name="found_dogs">Found Pets</string>
+    <string name="location_in_map">Location in Map</string>
+    <string name="the_lost_location">The Lost Location</string>
+    <string name="no_location_available_alert">No Location Available</string>
+    <string name="no_location_available_alert_desc">The owner didn\'t set the location in the map.  Please refer to the location description.</string>
+    <string name="dog">Dog</string>
+    <string name="show_map">Show Map</string>
+    <string name="set_location">Set Location</string>
+    <string name="notes">Notes</string>
+    <string name="hint_for_notes">Please enter anything you want to note.</string>
+    <string name="change_password">Change Password</string>
+    <string name="profile">Profile</string>
+    <string name="current_password">Current Password:</string>
+    <string name="new_password">New Password:</string>
+    <string name="change_password_title">Change Password</string>
+    <string name="same_passwords_alert">Same Passwords</string>
+    <string name="same_password_alert_desc">The current password and the new password are the same.  There is no need to update.</string>
+    <string name="password_success_alert_desc">The password has been changed.</string>
+    <string name="password_incorrect_alert_desc">The current password you entered was incorrect.  Please try again.</string>
+    <string name="password_error_alert_desc">The server has error.  Please try again later.</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="password_reset_alert">Password Reset Email</string>
+    <string name="password_reset_alert_desc">Please enter the email that used to register this app.  The server will send you an email with the password reset link.</string>
+    <string name="incorrect_login_info_alert">User Login</string>
+    <string name="incorrect_login_info_alert_desc">The login credentials are incorrect.  Either the email or password is incorrect, or both.</string>
+    <string name="reset_email_sent_alert">Reset Email</string>
+    <string name="reset_email_sent_alert_desc">Reset email was sent.  Please check your email.</string>
+    <string name="reset_email_error_alert_desc">Either the email you entered was not in our record, or there was an error in the server.  Please try again.</string>
+    <string name="email_invalid_desc">The email you entered was not valid.  Please try again.</string>
+    <string name="touch_to_reply">Touch to reply</string>
+    <string name="app_introduction">App Introduction</string>
+    <string name="app_introduction_text">The app let the user report their lost pets or found pets.  The data will be saved in the database.\n\nThe other users can read the data anytime they like.  So if a user lost a pet, he/she can read the found pets list to see if anyone found his/her pet.  Vice versa for a user who found a pet.\n\nThe app dedicates to help pet owners to find their lost pets.  You can also send message to the pet owner directly in the app.</string>
+    <string name="lost_dog_report">Pet Report</string>
+    <string name="lost_report_success_alert_desc">The report was sent to the server successfully.  We\'ll send an email to you if there is anyone found the pet.</string>
+    <string name="lost_report_failure_alert_desc">There is error in the server.  Please try again later.</string>
+    <string name="invalid_date_alert_desc">You can only enter a date back to ten years ago till now.</string>
+    <string name="location_permissions">Location Permissions</string>
+    <string name="send_message_failure_alert">Message was not Sent</string>
+    <string name="send_message_failure_alert_desc">There is error in sending the message.  Please make sure you have wifi.  If the error persists, there is probably error in the server.</string>
+    <string name="send_message_error_alert">Send Message Error</string>
+    <string name="send_message_error_alert_desc">The app doesn\'t allow users send messages to themselves.</string>
+    <string name="account_registration">Account Registration</string>
+    <string name="email_exists_alert_desc">The email you entered already existed in the database.  Please login using this email, or register a new account using another email.</string>
+    <string name="server_error_alert_desc">There is error in the server.  Please try again later.</string>
+    <string name="pet_type">Pet type:</string>
+    <string name="dogs">Dogs</string>
+    <string name="cats">Cats</string>
+    <string name="birds">Birds</string>
+    <string name="others">Others</string>
+    <string name="all">All</string>
+    <string name="edit_report">Edit Report</string>
+    <string name="select_a_report">Select A Report</string>
+    <string name="choose_a_report">Choose a Report</string>
+    <string name="pet_report_update">Pet Report Update</string>
+    <string name="update_report_success_alert_desc">The pet report was updated successfully.</string>
+    <string name="delete_report">DELETE REPORT</string>
+    <string name="delete_report_confirmation">Delete Report Confirmation</string>
+    <string name="delete_report_alert_desc">Are you sure you want to delete this report?</string>
+    <string name="delete_report_alert">Delete Report</string>
+    <string name="delete_report_success_alert_desc">The report was deleted successfully.</string>
+    <string name="delete_report_failure_alert_desc">The app failed to delete the report.  The server may be down.  Please make sure the WIFI is on.  Please try again later.</string>
+
+</resources>

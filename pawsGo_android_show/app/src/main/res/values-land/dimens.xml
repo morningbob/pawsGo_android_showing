@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="content_left_right_margin">150dp</dimen>
+    <dimen name="content_text_size">22sp</dimen>
+    <dimen name="title_text_size">25sp</dimen>
+    <dimen name="icon_margin_top">30dp</dimen>
+    <dimen name="title_margin_top">30dp</dimen>
+    <dimen name="icon_size">50dp</dimen>
+    <dimen name="error_text_size">16sp</dimen>
+    <dimen name="error_left_right_margin">160dp</dimen>
+    <dimen name="button_text_size">17sp</dimen>
+    <dimen name="button_left_right_margin">200dp</dimen>
+    <dimen name="button_padding">5dp</dimen>
+    <dimen name="progress_bar_top_margin">220dp</dimen>
+    <dimen name="progress_bar_left_right_margin">100dp</dimen>
+    <dimen name="spinner_item_text_size">22sp</dimen>
+    <dimen name="spinner_dropdown_item_margin">20dp</dimen>
+</resources>
