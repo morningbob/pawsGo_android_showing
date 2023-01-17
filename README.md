@@ -1,69 +1,75 @@
-# Paws Go
+# Walking Dogs
 
 &nbsp;
 
-## Paws Go Android Mobile App
+## Walking Dogs Android Mobile App
 
 &nbsp;
 &nbsp;
 
-### Paws Go is an app for pet owners to report their lost pets.  It is a platform for users who found a pet and who lost a pet, to communicate.  The users can also message the dog owners in the app.  
+### Walking dogs is an app for dog owners to share their favorite dog walk routes to the other dog owners.  The users can also get suggested routes by city, which are shared by the other users.
 
 &nbsp;
 
-### The app uses Firebase Authentication to validate users.  Users need to create an account using an email and a password.  All the functions of the app requires users to login the app.  
-
-### The app also use Google Maps to let users to mark the lost place for the pet.  It also uses the map to display the lost location to the other users.  However, the pet owners can also write in words for the lost location.
-
-### Moreover, the app stores the lost pet's photo in Google Cloud Storage.  It will be presented to the other users when they read the lost pets list.
+### The app requires users to be authenticated by an email and a password.  The app uses Firebase Authentication to validate users.  
 
 &nbsp;
 
-&nbsp;
+### The app implements Google map to show the routes and locations.  Users can add markers to indicate a route.  The app posts requests to Google map API, Directions API, Geocoding API and Places API to get required information.
 
-<img src=".\images\pawsGo_001.png" alt="application login screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+### The users can get recommended routes from a location they choose.  Individual routes will be shown upon click.  
 
-&nbsp;
-<center> Users need to create an account and login the app in order to use any of the app functions.  This helps the app to facilitate the messaging function and save the lost reports under the user's profile.</center>
 &nbsp;
 
 &nbsp;
 
-<img src=".\images\pawsGo_002.png" alt="home screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+<img src=".\shareRoutes_images\01_shareRoutes.jpg" alt="application home screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
 
 &nbsp;
-&nbsp;
-<center>Users can change the password in home page.  There is a menu here.  Users do most navigations from here.  </center>
-&nbsp;
-
-<img src=".\images\pawsGo_004.png" alt="report lost pet screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
-
-&nbsp;
-&nbsp;
-<center>This is the report lost pet form.  Users need to fill in the form to file a report.  The reports will be available in the lost pets list in the main menu at home page.  The users can use the map to mark the lost location in the report.</center>
+<center> Login screen </center>
 &nbsp;
 
-&nbsp;
-
-<img src=".\images\pawsGo_005.png" alt="lost pet reports list screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+<img src=".\shareRoutes_images\04_shareRoutes.jpg" alt="create account page screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
 
 &nbsp;
-&nbsp;
-<center>This is the list of the lost pets.  All the reports filed are saved in Firestore.  The app sends a request to Firestore when started, to get all the lost pets and found pets reports.  They are shown here in the lost pets and found pets list.</center>
-&nbsp;
-
-<img src=".\images\pawsGo_006.png" alt="send message screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
-
-&nbsp;
-&nbsp;
-<center>Users can send message to the other users.  When they think they found the lost dog in the report, they can message the pet owner.  The pet owner can reply too.  Or, the users can message the user who found a dog in a found dog report.</center>
+<center> Create Account screen </center>
 &nbsp;
 
-<img src=".\images\pawsGo_007.png" alt="messages received list screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+<img src=".\shareRoutes_images\03_shareRoutes.jpg" alt="forgot password screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
 
 &nbsp;
+<center> Send reset password email </center>
 &nbsp;
-<center>This is where the users can read the messages they received from the other users.  The users can also read the messages sent in the messages sent list.</center>
+
+<img src=".\shareRoutes_images\05_shareRoutes.jpg" alt="application home screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+
+&nbsp;
+<center> Home Screen </center>
+&nbsp;
+
+<img src=".\shareRoutes_images\06_shareRoutes.jpg" alt="create a route screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+
+&nbsp;
+<center> Creating a route </center>
+&nbsp;
+
+<img src=".\shareRoutes_images\07_shareRoutes.jpg" alt="sharing a route screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+
+&nbsp;
+<center> Sharing a route </center>
+&nbsp;
+
+<img src=".\shareRoutes_images\09_shareRoutes.jpg" alt="list of suggested routes screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+
+&nbsp;
+<center> showing recommended routes </center>
+&nbsp;
+
+<img src=".\shareRoutes_images\10_shareRoutes.jpg" alt="user account management screenshot" style="width:250px; margin-left: auto; margin-right: auto; display: block;" />
+
+&nbsp;
+<center> users can change email and/or password in user account page </center>
+&nbsp;
 &nbsp;
 
 ## Programming Style
@@ -74,40 +80,60 @@
 
 &nbsp;
 
-2. The app uses Firebase Authentication to validate users.  Besides keeping a record in Firebase Auth.  The app create an user object and send to Firestore database.  Firestore keeps the user objects in a collection.  It keeps the most updated user status in the database.  Whenever the user logins, the app retrieves the user object from the Firestore and then update the user object in local database. 
+2. There are several functions in the app, like sharing routes and getting recommended routes.  They involve getting information from google map api, Geocoding API, Places API and Direction API.  They have many steps.  I created separate app states for these functions to coordinate different fragments to do different parts to achieve the common goal.  The use of app states greatly reduced the number of live data variables I needed.
 
 &nbsp;
 
-3. Besides saving the user's data in Firestore.  The app also save the data locally, in the device.  The app uses Room Database.  I created User class, Message class and Pet class.  The two databases, Firestore and Room Database works together, as follows: The app retrieves data from Firestore.  It saves the data in the local database.  All the fragments in the app were set to retrieve live data from the room database.  So, whenever there is an update in the data, the fragments will receive notification and display the updated data in user interfaces.  This setting helps the app to display the latest available information if the users don't have good internet access, like a bad WIFI connection.  Because the app is not displaying the data from Firestore directly.  It is displaying the saved local data.  
+3. The app implements Firebase Authentication, the one uses email and password.  Users need to create an account and login to the app before accessing any function.
 
 &nbsp;
 
-4. Whenever the user performs an action in the app.  The app retrieves the user object from Firestore again, and updates it.  For example, if the user reports a lost dog, the app retrieves the most current user object from Firestore, and add the lost dog in the lost dog list in the user object.  The app then sends the updated user object to Firestore.  At the same time, the app also save the lost dog in the local database.  In cases like this, the app's interfaces are updated when the app save the lost dog locally, instead of waiting for the updated user object from Firestore.  Then, the app doesn't need to send so many requests to get the user object from Firestore, in order to keep the user's interface updated.  
+4. The login and create user account pages, the user name, email and password field shows errors and hints every time user press a key.  When the user got all fields correct with no error, the login and the create account button will be shown.  I used mediator live data variables to achieve that function.  It will minimize the problematic entries before sending to Firebase Auth.
 
 &nbsp;
 
-5. Users can message the other users in the app.  But only when the user filed a report, can the other users message him.  The user can message back.  There is no add friends function in the app.  When a user sends a message, the app creates a message object and writes it to the messages collection in Firestore.  I wrote a cloud function to facilitate the messaging in the app.  The cloud function finds the sender's user object in Firestore and writes the message in the messages sent list.  On the contractory, it finds the receiver's user object in Firestore and writes the message in the messages received list.  The messages are delivered like that.
+5. The app also has a password recovery function which sends a password reset email to the user.  Firebase Auth sends the email for us.  The user can then click the link to enter a new password and use it to login the app again.
 
 &nbsp;
 
-6. When the user files a lost or found pet report, the app writes to the lost or found pets collection in Firestore.  The pet object will also be saved in the user object in Firestore, and local database.  Whenever the app starts, it retrieves the lost pets and found pets list from lost and found collections in Firestore.  That way, the app gets the updated reports from Firestore and displays to the users.  I will also write a cloud function to match lost and found reports, to see if there is a match.  I'll compare the pet's name, breed, lost location etc.  If I find a match, I'll write a message to the owner's user object, next time he starts the app, he will be notified.
+6. The app also allows users to change their password, as well as the email registered.  The app sends the change request to Firebase Auth and notice the user if it is successful.
 
 &nbsp;
 
-7. When the user files a report, he can upload a pet's image too.  The app upload the image to Google Cloud Storage, instead of Firestore.  The app creates a pet object, it stores the location url string of the image in the object, and sends it to Firestore.  When the app starts, it retrieves the lost and found pets from Firestore.  It also read the pet objects' location url string and downloads the pets' images from Google Cloud Storage.  I use Glide to display the images in user's interfaces.  I use a binding adapter to bind the images to the layouts.  Glide is responsible to send the request to Cloud Storage, download the image, then the binding adapter binds the image to the layouts.  Now, the users can only upload one image per report.  I will refactor the app to let the users to upload, two or three images later.
+7. I created user object and route object to represent the users and the routes.  I save these objects in Firebase realtime database.  There is a users entry.  All users will be saved under this entry.  Under a user object, there is routes created property which contains all the routes the user created.  Under a route object, there are several properties.  This includes address, points that compose the route, city, state, country.  I use the city property to suggest routes to the user.
 
 &nbsp;
 
-8. The app uses Google Maps to show the lost location of the pet.  The users can also mark and edit the lost location using Google Maps.  When the user mark a place, I use the Google Place API to get the coordiante of the mark.  I also use Google Geocoding API to get the address of the lost location user marked in the map.  Both the address string and the coordinate of the lost location is saved in the dog report.
+8. The app implemented Google Map to show the routes to the users.  The map is enclosed in the support map fragment, as suggested by Google.  The fragment is then embedded in the map page fragment which consists of the map and the menu.
 
 &nbsp;
 
-9. The users can also edit the pet report in the app.  They can also upload another picture of their pet.  But the new one will replace the old one.  Now, only 1 image is allowed.  Users can also reset their accounts' passwords in the login page.  I use Firebase's Authentication to send a password reset email to the user.  He can reset the password by clicking on the link in the email.  Besides that, users can change their passwords for their accounts.  However, I don't let users change their emails.
+9. The app allows users to type in a place name to search the map too.  I embedded the auto complete support fragment of search bar in the map page fragment.  I configure the fragment to return the place information the user choose.  The map will then navigate to that place.
 
 &nbsp;
 
-10.  I wrote the iOS version of the Paws Go app too.  Please take a look at it and give me comments.  Thank you very much!  <a href="https://github.com/morningbob/pawsGo_iOS_for_show">https://github.com/morningbob/pawsGo_iOS_for_show</a>
+10. Users can place up to 10 markers in the map.  The total distance is limited to 5000km.  Then, the app will post a request to Directions API to attempt to get a route from the markers.  The app then draws a polyline to connect all the points returned in the map.
 
+&nbsp;
 
+11. Users can then click share route button to share the route to the other users.  The points of the route will be saved in Firebase realtime database, as hashmap entries.  This is because Firebase database doesn’t support list structure.  Each point is represented as an entry in the map, with latitude and longitude as the keys.
 
+&nbsp;
 
+12. In the suggest route fragment, users can get recommended route by choosing a point in the map.  The app will then post request to Geocoding API to get the city the point located.  Then, it will post another request to Firebase realtime database to search the routes which located in the city and display to the user.
+
+&nbsp;
+
+13. The user can then choose a route.  The app retrieve the route data from Firebase database and parses it back to an route object.  The app then draw the route as a polyline in the map.  Only one route is displayed at any time.
+
+&nbsp;
+
+14. In the future, I might add the like feature for the routes.  That users can like a route.  It will keep track of the number of the likes.  The routes can then be ranked by the number of likes and recommended accordingly to the user.
+
+&nbsp;
+
+15. Please give me comments.  Thank you very much!
+
+&nbsp;
+
+## All right reserved
